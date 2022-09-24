@@ -6,10 +6,11 @@
     box-sizing: border-box;
 }
 
-body {
+body  {
     background-color: var(--background-light);
     color: var(--background-dark);
-    font-family: var(--secondary-font);
+    font-family: var(--primary-font);
+    font-weight: 500;
     overflow-x: hidden;
 }
 
@@ -19,4 +20,25 @@ body {
 
 button {
     cursor: pointer;
+}
+
+.btn-openSidebar {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 157px;
+    height: 40px;
+    background: var(--background-light);
+    border: 2px solid var(--background-dark);
+    border-radius: 10px;
+    font-family: var(--primary-font);
+    @media screen and (max-width: 576px) {
+        display: block;
+    }
+
+    span {
+        color: var(--background-dark);
+        font-weight: 600;
+    }
 }

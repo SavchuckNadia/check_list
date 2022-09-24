@@ -1,11 +1,10 @@
-.input_lg{
+.input_lg {
     width: 100%;
     height: 56px;
     background: var(--text-primary-light);
     padding: 20px;
-
 }
 
-.input_lg:focus{
+.input_lg:focus {
     border: 1px solid var(--text-secondary);
 }
