@@ -1,0 +1,19 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.container {
+    @include mixins.flex(row, center, center);
+    padding: 0 30px;
+
+    @media screen and (max-width:768px) {
+        @include mixins.flex(column, center, flex-start);
+        padding: 0 15px;
+    }
+
+    button {
+        margin: 5px 0 0 10px;
+
+        @media screen and (max-width:768px) {
+            margin: 15px 0;
+        }
+    }
+}

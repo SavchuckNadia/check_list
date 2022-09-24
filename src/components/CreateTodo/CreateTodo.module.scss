@@ -1,0 +1,14 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.create_container {
+    @include mixins.flex(row, space-between, center);
+    margin-bottom: 64px;
+}
+
+.create_container>input {
+    margin-right: 25px;
+}
+
+.create_warning {
+    font-size: 20px;
+}

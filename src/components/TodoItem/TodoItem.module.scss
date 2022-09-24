@@ -1,0 +1,10 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.todo_container {
+    @include mixins.flex(row, space-between, center);
+    margin-bottom: 20px;
+}
+
+.delete_icon {
+    cursor: pointer;
+}

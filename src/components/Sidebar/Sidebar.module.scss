@@ -1,0 +1,10 @@
+.sidebar {
+    position: relative;
+    width: 45%;
+    max-width: 519px;
+    height: 100vh;
+    z-index: 200;
+    background-color: var(--background-dark);
+    padding: 30px 0px;
+    overflow: hidden;
+}

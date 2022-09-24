@@ -1,0 +1,19 @@
+@use '../../../styles/abstracts/mixins.scss';
+
+.btn {
+    width: 91px;
+    height: 40px;
+    background: var(--background-dark);
+    border-radius: 10px;
+    color: var(--text-primary-light);
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    @include mixins.font-size(16px);
+    @include mixins.flex(row, center, center);
+}
+
+.btn_icon {
+    margin-right: 13px;
+}

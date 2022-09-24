@@ -1,0 +1,71 @@
+@use '../../../styles/abstracts/mixins.scss';
+
+.checkbox[type="checkbox"] {
+    opacity: 0;
+}
+
+.checkbox[type="checkbox"]+label {
+    position: relative;
+    padding-left: 130px;
+    cursor: pointer;
+    display: inline-block;
+    color: var(--text-secondary);
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 700;
+    @include mixins.font-size(16px);
+    line-height: 19px;
+}
+
+.checkbox[type="checkbox"]+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    outline: 2px solid var(--border-light);
+    background: #ffff;
+}
+
+
+.checkbox[type="checkbox"]:checked+label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: #ffff;
+}
+
+.checkbox[type="checkbox"]:checked+label {
+    text-decoration-line: line-through;
+}
+
+.checkbox[type="checkbox"]:checked+label::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-image: url('../../../assets/svg/check.svg');
+    background-size: contain;
+    transform: scale(1);
+    opacity: 1;
+    transition: all .3s ease;
+}
+
+.checkbox[type="checkbox"]:not(:checked)+label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background-image: url('../../../assets/svg/check.svg');
+    background-size: contain;
+    transform: scale(0);
+    opacity: 0;
+}

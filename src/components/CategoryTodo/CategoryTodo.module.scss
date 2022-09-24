@@ -1,0 +1,52 @@
+@use '../../../src/styles/abstracts/mixins.scss';
+
+.container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    @include mixins.flex(row, flex-start, center);
+    padding: 27px 30px;
+
+    @media screen and (max-width:768px) {
+        padding: 27px 15px;
+    }
+}
+
+.container.active {
+    background: var(--background-light);
+
+    .category_icon {
+        background: var(--text-secondary);
+    }
+
+    .category_name {
+        color: var(--text-secondary);
+    }
+}
+
+.category_icon {
+    width: 56px;
+    height: 56px;
+    background: var(--text-primary-light);
+    border-radius: 50%;
+    margin-right: 17px;
+    cursor: pointer;
+}
+
+.category_name {
+    color: var(--text-primary-light);
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 500;
+    @include mixins.font-size(14px);
+    line-height: 16px;
+    text-align: center;
+    @include mixins.flex(row, center, center);
+}
+
+.category_delete {
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    cursor: pointer;
+}
