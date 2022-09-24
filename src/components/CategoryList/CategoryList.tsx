@@ -2,34 +2,30 @@ import { useEffect } from 'react'
 import CategoryTodo from '../CategoryTodo/CategoryTodo'
 import styles from './CategoryList.module.scss'
 import { fetchCategories } from '../../redux/getDefaultCategories'
-import { saveState } from '../../localStorage'
-import { useAppSelector } from '../../hooks/redux-hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks'
 import { useCategories } from '../../hooks/useCategories'
-import { IStore } from '../../redux/interfaces/interfaces'
+import { ICategoryTodo, IStore } from '../../redux/interfaces/interfaces'
+import { categoryActions } from '../../redux/category-slice'
 
 function CategoryList() {
   const state = useAppSelector((state: IStore) => state)
+  const dispatch = useAppDispatch()
   const categories = state.categories
   const currentCategory = state.currentCategory
   const filterCategories = useCategories(categories, state.filter.query);
 
 
   const fetchDefaultCategories = async () => {
-    const result = await fetchCategories()
-    const DefaultState = {
-      categories: result,
-      currentCategory: { name: categories[0]?.name || '' },
-      todos: [],
-      filter: {
-        query: ''
-      }
+    const result: any = await fetchCategories()
+    if (result) {
+      result.forEach((category: ICategoryTodo) => { dispatch(categoryActions.addCategory(category)) })
     }
-    saveState(DefaultState);
   }
 
   useEffect(() => {
-    const serializedState = localStorage.getItem("redux");
-    if (!serializedState) fetchDefaultCategories()
+    if (categories.length === 0) {
+      fetchDefaultCategories()
+    }
   }, [])
 
 
