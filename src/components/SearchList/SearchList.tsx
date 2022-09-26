@@ -19,7 +19,8 @@ function SearchList() {
     setNewCategory(e.target.value)
   }
 
-  const addNewCategory = () => {
+  const addNewCategory = (event:React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>) => {
+    event.preventDefault()
     const createdCategory: ICategoryTodo = {
       id: uuidv4(),
       name: newCategory
@@ -31,17 +32,17 @@ function SearchList() {
 
   const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter") {
-      addNewCategory()
+      addNewCategory(event)
       dispatch(filterCategoryActions.setFilterCategory(''))
     }
   };
 
 
   return (
-    <div className={styles.container}>
+    <form className={styles.container} onSubmit={addNewCategory}>
       <InputLg value={newCategory} onChangeHandler={getCategoryName} keyDownHandler={keyDownHandler} />
-      <Button icon={searchIcon} text='Add' isDisabled={!newCategory} onClickHandler={addNewCategory} />
-    </div>
+      <Button icon={searchIcon} text='Add' isDisabled={!newCategory} />
+    </form>
   )
 }
 

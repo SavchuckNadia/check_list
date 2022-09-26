@@ -4,12 +4,11 @@ interface ButtonProps {
   icon: string;
   text: string;
   isDisabled: boolean;
-  onClickHandler?: () => void;
 }
 
-function Button({ icon, text, isDisabled, onClickHandler }: ButtonProps) {
+function Button({ icon, text, isDisabled }: ButtonProps) {
   return (
-    <button type='button' className={styles.btn} onClick={onClickHandler} disabled={isDisabled}>
+    <button type='submit' className={styles.btn} disabled={isDisabled}>
       <img src={icon} alt="" className={styles.btn_icon} />
       {text}
     </button>

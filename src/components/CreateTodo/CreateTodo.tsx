@@ -18,7 +18,8 @@ function CreateTodo() {
     setNewTodo(e.target.value)
   }
 
-  const addNewTodo = () => {
+  const addNewTodo = (event:React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>) => {
+    event.preventDefault()
     const createdTodo: ITodo = {
       id: uuidv4(),
       name: newTodo,
@@ -31,16 +32,16 @@ function CreateTodo() {
 
   const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter") {
-      addNewTodo()
+      addNewTodo(event)
     }
   };
 
   return (
     <>
-      <div className={styles.create_container}>
+      <form className={styles.create_container} onSubmit={addNewTodo}>
         <InputMd value={newTodo} onChangeHandler={createNewTodo} keyDownHandler={keyDownHandler} />
-        <Button icon={addIcon} text='Add' isDisabled={!newTodo} onClickHandler={addNewTodo} />
-      </div>
+        <Button icon={addIcon} text='Add' isDisabled={!newTodo} />
+      </form>
       {
         !state.categories.length && <p className={styles.create_warning}>Create a category for tasks!</p>
       }

@@ -7,7 +7,7 @@ import MainPage from './pages/MainPage/MainPage';
 
 function App() {
   const state = useAppSelector(state => state)
-  const[isOpenSidebar, setIsOpenSidebar] = useState(false)
+  const [isOpenSidebar, setIsOpenSidebar] = useState(false)
   const isMobile = useMediaQuery('(max-width: 576px)')
 
   useEffect(() => {
@@ -20,8 +20,12 @@ function App() {
       <MainPage isOpenSidebar={isOpenSidebar} />
       {!isOpenSidebar && <button className='btn-openSidebar' onClick={() => setIsOpenSidebar(!isOpenSidebar)}>
         Choose category
-        <hr />
-        <span>{state.currentCategory.name}</span>  
+        {state.categories.length > 0 &&
+          <>
+            <hr />
+            <span>{state.currentCategory.name}</span>
+          </>
+        }
       </button>}
     </main>
   );
