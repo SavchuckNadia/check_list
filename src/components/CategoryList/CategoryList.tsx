@@ -16,7 +16,7 @@ function CategoryList() {
 
 
   const fetchDefaultCategories = async () => {
-    const result: any = await fetchCategories()
+    const result: ICategoryTodo[] = await fetchCategories()
     if (result) {
       result.forEach((category: ICategoryTodo) => { dispatch(categoryActions.addCategory(category)) })
     }

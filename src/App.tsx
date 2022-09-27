@@ -18,7 +18,7 @@ function App() {
     <main className='wrapper'>
       <Sidebar setIsOpenSidebar={setIsOpenSidebar} isOpenSidebar={isOpenSidebar} />
       <MainPage isOpenSidebar={isOpenSidebar} />
-      {!isOpenSidebar && <button className='btn-openSidebar' onClick={() => setIsOpenSidebar(!isOpenSidebar)}>
+      {!isOpenSidebar && <button className='btn-openSidebar' onClick={() => setIsOpenSidebar(prevState => !prevState)}>
         Choose category
         {state.categories.length > 0 &&
           <>
